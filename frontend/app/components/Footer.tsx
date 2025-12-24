@@ -34,9 +34,6 @@ const Footer = () => {
             </div>
             <div className="flex flex-col md:flex-row justify-between items-center text-xs text-zinc-600 pt-8 border-t border-white/5">
                 <div>&copy; {new Date().getFullYear()} WANTED. All rights reserved.</div>
-                <div className="mt-4 md:mt-0">
-                    Designed with <span className="text-[#D3E97A]">Fontshare</span> aesthetics
-                </div>
             </div>
         </footer>
     );

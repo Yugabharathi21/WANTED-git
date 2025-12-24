@@ -9,9 +9,9 @@ const Navbar = () => {
       </div>
 
       <div className="hidden md:flex gap-12 text-sm font-medium text-zinc-400">
-        <div className="hover:text-white transition-colors cursor-pointer relative group">
+        <Link href="/issues" className="hover:text-white transition-colors cursor-pointer relative group">
           <span className="group-hover:text-[#D3E97A] transition-colors">Issues</span>
-        </div>
+        </Link>
         <div className="hover:text-white transition-colors cursor-pointer relative group">
           <span className="group-hover:text-[#D3E97A] transition-colors">Claims</span>
         </div>
