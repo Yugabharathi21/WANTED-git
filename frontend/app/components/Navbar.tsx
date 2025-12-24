@@ -21,9 +21,11 @@ const Navbar = () => {
       </div>
 
       <div className="flex gap-6 items-center">
-        <button className="text-xs font-bold bg-[#D3E97A] text-black px-4 py-2 rounded-full hover:bg-white transition-colors">
-          Connect Github
-        </button>
+        <Link href="/connect">
+          <button className="text-xs font-bold bg-[#D3E97A] text-black px-4 py-2 rounded-full hover:bg-white transition-colors">
+            Connect Github
+          </button>
+        </Link>
       </div>
     </nav>
   );
