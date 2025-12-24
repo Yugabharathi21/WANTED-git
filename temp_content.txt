@@ -1,0 +1,238 @@
+# Bug Bounty for Open Source Issues  
+## AI-Powered Issue Discovery, Ranking, Crowdfunded Micro-Bounties + Gamification
+
+---
+
+## 1. Project Goal
+
+Build a platform that:
+- Scrapes GitHub issues from opted-in open-source repositories
+- Ranks issues by **impact** and **difficulty**
+- Crowdfunds micro-bounties from dependent companies
+- Lets developers **claim, solve, and get paid**
+- Rewards contributors with **XP, ranks, and badges**
+
+---
+
+## 2. High-Level Architecture
+
+```
+GitHub App → Issue Ingestor → Ranking Engine → Marketplace
+                               ↓
+                        XP / Rank / Badge Engine
+                               ↓
+                           Payments
+```
+
+---
+
+## 3. Tech Stack
+
+**Backend**
+- Node.js (Fastify/NestJS) or Python (FastAPI)
+- GitHub REST + GraphQL APIs
+- Webhooks
+
+**Frontend**
+- Next.js + TypeScript
+- Tailwind CSS
+
+**Data**
+- PostgreSQL
+- Redis
+
+**AI**
+- LLM for summaries, ranking explanation
+- Heuristic + ML scoring
+
+**Payments**
+- Stripe Connect (v1)
+- Hackathon: virtual credits
+
+---
+
+## 4. Core Data Models
+
+### Issue
+- id
+- repo_id
+- title
+- labels
+- impact_score
+- difficulty_score
+- bounty_pool
+
+### Claim
+- issue_id
+- developer_id
+- status
+- expires_at
+
+### Pledge
+- issue_id
+- sponsor_id
+- amount
+
+---
+
+## 5. Issue Ingestion (Copilot Instructions)
+
+**Prompt Copilot:**
+
+> Build a GitHub App that listens to issue and PR webhooks  
+> Normalize and store data in PostgreSQL  
+
+Steps:
+1. Create GitHub App
+2. Subscribe to issues, issue_comment, pull_request
+3. Validate signatures
+4. Upsert issue data
+
+---
+
+## 6. Impact Scoring
+
+Signals:
+- Dependents count
+- Labels (bug/security)
+- Comments & reactions
+
+Formula:
+```
+impact = dependents*0.4 + comments*0.2 + reactions*0.2 + label_weight*0.2
+```
+
+---
+
+## 7. Difficulty Scoring
+
+Signals:
+- Churn
+- Repro availability
+- Historical fix time
+
+```
+difficulty = churn*0.3 + fix_time*0.3 + missing_repro*0.2 + core_area*0.2
+```
+
+---
+
+## 8. Ranking
+
+```
+final_score = impact / difficulty
+```
+
+---
+
+## 9. Claim Workflow
+
+1. Developer claims issue
+2. Plan submitted in 24h
+3. PR linked
+4. Maintainer merges
+5. Payout + XP granted
+
+---
+
+## 10. Crowdfunding
+
+- Sponsors pledge into bounty pool
+- Funds released on merge
+- Split: 90% dev / 10% maintainer
+
+---
+
+## 11. XP (Experience Points)
+
+XP rewards **quality outcomes**, not speed.
+
+| Action | XP |
+|------|----|
+| Plan approved | +10 |
+| PR submitted | +20 |
+| PR merged | +100 |
+| Tests added | +30 |
+| Docs updated | +20 |
+| Zero rework PR | +25 |
+
+**Penalties**
+
+| Action | XP |
+|------|----|
+| Claim expired | -30 |
+| Rejected PR | -50 |
+| Spam | -20 |
+
+---
+
+## 12. Ranks
+
+| Rank | XP |
+|----|----|
+| Rookie | 0–199 |
+| Contributor | 200–799 |
+| Specialist | 800–1999 |
+| Expert | 2000–4999 |
+| Architect | 5000+ |
+
+Perks:
+- Higher bounty access
+- Priority claims
+- Payout multipliers
+
+---
+
+## 13. Badges
+
+### Contribution
+- Bug Slayer (10 fixes)
+- Test Champion (5 test PRs)
+- Zero Rework (5 clean merges)
+
+### Reliability
+- On-Time Closer
+- Clean Contributor
+
+### Community
+- Helpful Human
+- Maintainer Ally
+
+---
+
+## 14. Anti-Abuse Rules
+
+- Claim cooldowns
+- Rank-based limits
+- Manual moderation
+- Evidence-based XP
+
+---
+
+## 15. Frontend Pages
+
+- /issues (ranked feed)
+- /issues/:id
+- /claims
+- /profile
+- /maintainer
+
+---
+
+## 16. Hackathon Scope
+
+**Include**
+- Ranking
+- Claim
+- XP + ranks
+- Demo funding
+
+**Skip**
+- Real payouts
+- On-chain logic
+
+---
+
+## 17. Design Principle
+
+> Incentives must improve open-source health, not exploit it.
