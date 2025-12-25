@@ -12,9 +12,9 @@ const Navbar = () => {
         <Link href="/issues" className="hover:text-white transition-colors cursor-pointer relative group">
           <span className="group-hover:text-[#D3E97A] transition-colors">Issues</span>
         </Link>
-        <div className="hover:text-white transition-colors cursor-pointer relative group">
+        <Link href="/claims" className="hover:text-white transition-colors cursor-pointer relative group">
           <span className="group-hover:text-[#D3E97A] transition-colors">Claims</span>
-        </div>
+        </Link>
         <div className="hover:text-white transition-colors cursor-pointer relative group">
           <span className="group-hover:text-[#D3E97A] transition-colors">Leaderboard</span>
         </div>
