@@ -1,10 +1,16 @@
-import React from 'react';
+'use client';
+
+import Link from 'next/link';
+import React, { useState } from 'react';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ProfileStats from "../components/ProfileStats";
 import ClaimCard from "../components/ClaimCard";
+import ShareProfileModal from "../components/ShareProfileModal";
 
 export default function ProfilePage() {
+    const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+
     return (
         <main className="min-h-screen bg-[#060606] text-[#EDEDED] font-clash selection:bg-[#D3E97A] selection:text-black flex flex-col">
             <Navbar />
@@ -48,10 +54,15 @@ export default function ProfilePage() {
                     </div>
 
                     <div className="flex gap-4">
-                        <button className="px-6 py-2 border border-white/10 hover:border-[#D3E97A] hover:text-[#D3E97A] transition-all text-xs font-bold uppercase tracking-wider rounded-full">
-                            Edit Profile
-                        </button>
-                        <button className="px-6 py-2 bg-[#D3E97A] text-black hover:bg-white transition-all text-xs font-bold uppercase tracking-wider rounded-full">
+                        <Link href="/profile/edit">
+                            <button className="px-6 py-2 border border-white/10 hover:border-[#D3E97A] hover:text-[#D3E97A] transition-all text-xs font-bold uppercase tracking-wider rounded-full">
+                                Edit Profile
+                            </button>
+                        </Link>
+                        <button
+                            onClick={() => setIsShareModalOpen(true)}
+                            className="px-6 py-2 bg-[#D3E97A] text-black hover:bg-white transition-all text-xs font-bold uppercase tracking-wider rounded-full"
+                        >
                             Share Profile
                         </button>
                     </div>
@@ -100,6 +111,12 @@ export default function ProfilePage() {
             </div>
 
             <Footer />
+
+            <ShareProfileModal
+                isOpen={isShareModalOpen}
+                onClose={() => setIsShareModalOpen(false)}
+                username="yugabharathi21"
+            />
         </main>
     );
 }
