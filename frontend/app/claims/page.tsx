@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FilterSidebar from "../components/FilterSidebar";
@@ -18,14 +19,22 @@ export default function ClaimsPage() {
 
                     {/* Main Content */}
                     <div className="flex-1">
-                        <div className="flex justify-between items-end mb-12">
+                        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
                             <div>
-                                <h1 className="text-4xl md:text-5xl font-technor font-bold text-white mb-2">YOUR CLAIMS</h1>
-                                <p className="text-zinc-500">Managing 3 active claims</p>
+                                <h1 className="text-4xl md:text-5xl font-technor font-bold text-white mb-2 uppercase tracking-tighter">YOUR CLAIMS</h1>
+                                <p className="text-zinc-500 font-medium">Managing 3 active protocols</p>
                             </div>
-                            <div className="flex gap-4">
-                                <span className="text-xs font-bold uppercase tracking-wider text-[#D3E97A] cursor-pointer">Active</span>
-                                <span className="text-xs font-bold uppercase tracking-wider text-zinc-600 hover:text-white cursor-pointer transition-colors">History</span>
+                            <div className="flex flex-wrap items-center gap-6">
+                                <div className="flex gap-4 border-r border-white/10 pr-6 mr-6">
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#D3E97A] cursor-pointer">Active</span>
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-600 hover:text-white cursor-pointer transition-colors">History</span>
+                                </div>
+                                <Link href="/claims/issues">
+                                    <button className="px-6 py-3 bg-[#D3E97A] text-black text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-white transition-all shadow-[0_10px_20px_rgba(211,233,122,0.1)] flex items-center gap-2">
+                                        CREATE BOUNTY
+                                        <div className="w-1 h-1 bg-black rounded-full"></div>
+                                    </button>
+                                </Link>
                             </div>
                         </div>
 

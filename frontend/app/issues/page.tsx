@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FilterSidebar from "../components/FilterSidebar";
@@ -18,54 +19,76 @@ export default function IssuesPage() {
 
                     {/* Main Content */}
                     <div className="flex-1">
-                        <div className="flex justify-between items-end mb-12">
+                        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
                             <div>
-                                <h1 className="text-4xl md:text-5xl font-technor font-bold text-white mb-2">OPEN BOUNTIES</h1>
-                                <p className="text-zinc-500">Found 24 active opportunities</p>
+                                <h1 className="text-4xl md:text-5xl font-technor font-bold text-white mb-2 uppercase tracking-tighter">OPEN BOUNTIES</h1>
+                                <p className="text-zinc-500 font-medium">Found 24 active opportunities in the grid</p>
                             </div>
-                            <div className="flex gap-4">
-                                <span className="text-xs font-bold uppercase tracking-wider text-[#D3E97A] cursor-pointer">Newest</span>
-                                <span className="text-xs font-bold uppercase tracking-wider text-zinc-600 hover:text-white cursor-pointer transition-colors">Highest Paid</span>
+                            <div className="flex flex-wrap items-center gap-6">
+                                <div className="flex gap-4 border-r border-white/10 pr-6 mr-6">
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#D3E97A] cursor-pointer">Newest</span>
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-600 hover:text-white cursor-pointer transition-colors">Highest Paid</span>
+                                </div>
+                                <Link href="/claims/issues">
+                                    <button className="px-6 py-3 bg-[#D3E97A] text-black text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-white transition-all shadow-[0_10px_20px_rgba(211,233,122,0.15)] flex items-center gap-2">
+                                        POST BOUNTY
+                                        <div className="w-1 h-1 bg-black rounded-full"></div>
+                                    </button>
+                                </Link>
                             </div>
                         </div>
 
                         <div className="grid grid-cols-1 gap-4">
                             {/* Mock Data */}
-                            <IssueCard
-                                repo="facebook/react"
-                                title="Fix hydration error in Suspense boundaries with server components"
-                                xp={5000}
-                                difficulty="Expert"
-                                tags={['React', 'Bug', 'Core']}
-                            />
-                            <IssueCard
-                                repo="vercel/next.js"
-                                title="Optimize image optimization API for better caching performance"
-                                xp={2500}
-                                difficulty="Specialist"
-                                tags={['Next.js', 'Performance']}
-                            />
-                            <IssueCard
-                                repo="tailwindlabs/tailwindcss"
-                                title="Add support for container queries in v4 alpha"
-                                xp={12000}
-                                difficulty="Architect"
-                                tags={['CSS', 'Feature']}
-                            />
-                            <IssueCard
-                                repo="shadcn/ui"
-                                title="Add DateRangePicker component to registry"
-                                xp={1000}
-                                difficulty="Contributor"
-                                tags={['UI', 'New Component']}
-                            />
-                            <IssueCard
-                                repo="calcom/cal.com"
-                                title="Fix typo in onboarding workflow email template"
-                                xp={200}
-                                difficulty="Rookie"
-                                tags={['Good First Issue']}
-                            />
+                            <Link href="/issues/react-fix-hydration" className="block outline-none">
+                                <IssueCard
+                                    repo="facebook/react"
+                                    title="Fix hydration error in Suspense boundaries with server components"
+                                    xp={5000}
+                                    difficulty="Expert"
+                                    tags={['React', 'Bug', 'Core']}
+                                />
+                            </Link>
+
+                            <Link href="/issues/nextjs-optimize-images" className="block outline-none">
+                                <IssueCard
+                                    repo="vercel/next.js"
+                                    title="Optimize image optimization API for better caching performance"
+                                    xp={2500}
+                                    difficulty="Specialist"
+                                    tags={['Next.js', 'Performance']}
+                                />
+                            </Link>
+
+                            <Link href="/issues/tailwind-container-queries" className="block outline-none">
+                                <IssueCard
+                                    repo="tailwindlabs/tailwindcss"
+                                    title="Add support for container queries in v4 alpha"
+                                    xp={12000}
+                                    difficulty="Architect"
+                                    tags={['CSS', 'Feature']}
+                                />
+                            </Link>
+
+                            <Link href="/issues/shadcn-datepicker" className="block outline-none">
+                                <IssueCard
+                                    repo="shadcn/ui"
+                                    title="Add DateRangePicker component to registry"
+                                    xp={1000}
+                                    difficulty="Contributor"
+                                    tags={['UI', 'New Component']}
+                                />
+                            </Link>
+
+                            <Link href="/issues/calcom-typo-fix" className="block outline-none">
+                                <IssueCard
+                                    repo="calcom/cal.com"
+                                    title="Fix typo in onboarding workflow email template"
+                                    xp={200}
+                                    difficulty="Rookie"
+                                    tags={['Good First Issue']}
+                                />
+                            </Link>
                         </div>
 
                         {/* Pagination */}
