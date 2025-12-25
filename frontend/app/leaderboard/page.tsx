@@ -1,19 +1,43 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import LeaderboardRow from "../components/LeaderboardRow";
 
-const mockLeaderboard = [
-    { rank: 1, username: "Yugabharathi", avatar: "https://github.com/Yugabharathi21.png", level: 14, xp: 45000, cr: 12500, totalBounties: 32 },
-    { rank: 2, username: "DanAbramov", avatar: "https://github.com/gaearon.png", level: 13, xp: 42500, cr: 11200, totalBounties: 28 },
-    { rank: 3, username: "Shadcn", avatar: "https://github.com/shadcn.png", level: 12, xp: 38200, cr: 9800, totalBounties: 25 },
-    { rank: 4, username: "ThePrimeagen", avatar: "https://github.com/theprimeagen.png", level: 11, xp: 21000, cr: 5400, totalBounties: 15 },
-    { rank: 5, username: "LeeRobinson", avatar: "https://github.com/leerob.png", level: 10, xp: 18500, cr: 4200, totalBounties: 12 },
-    { rank: 6, username: "RichHarris", avatar: "https://github.com/rich-harris.png", level: 9, xp: 15200, cr: 3100, totalBounties: 9 },
-    { rank: 7, username: "TannerLinsley", avatar: "https://github.com/tannerlinsley.png", level: 8, xp: 12400, cr: 2500, totalBounties: 7 },
-];
+const mockLeaderboard = Array.from({ length: 40 }, (_, i) => ({
+    rank: i + 1,
+    username: [
+        "Vercel", "DanAbramov", "Shadcn", "ThePrimeagen", "LeeRobinson", "RichHarris", "TannerLinsley",
+        "KentCDodds", "SarahDrasner", "CassieCodes", "JasonLengstorf", "AddyOsmani", "WesBos", "ScottTolinski",
+        "JenSimmons", "RachelAndrew", "LeaVerou", "ChrisCoyier", "UnaKravets", "AdamArgyle"
+    ][i % 20] + (i >= 20 ? `_v${Math.floor(i / 20) + 1}` : ""),
+    avatar: `https://i.pravatar.cc/150?u=${i}`,
+    level: Math.max(1, 15 - Math.floor(i / 3)),
+    xp: 50000 - (i * 1200),
+    cr: 15000 - (i * 350),
+    totalBounties: Math.max(1, 35 - i)
+}));
+
+const currentUser = { rank: 42, username: "Yugabharathi", avatar: "https://github.com/Yugabharathi21.png", level: 5, xp: 8500, cr: 2100, totalBounties: 4 };
 
 export default function LeaderboardPage() {
+    const [expandedRank, setExpandedRank] = useState<number | null>(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(10);
+
+    const toggleRow = (rank: number) => {
+        setExpandedRank(prev => prev === rank ? null : rank);
+    };
+
+    const isUserInTopList = mockLeaderboard.some(user => user.username === currentUser.username);
+
+    // Pagination Logic
+    const totalPages = Math.ceil(mockLeaderboard.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const currentList = mockLeaderboard.slice(startIndex, startIndex + itemsPerPage);
+
+    const isUserOnCurrentPage = currentList.some(user => user.username === currentUser.username);
     return (
         <main className="min-h-screen bg-[#060606] text-[#EDEDED] font-clash selection:bg-[#D3E97A] selection:text-black flex flex-col">
             <Navbar />
@@ -50,7 +74,7 @@ export default function LeaderboardPage() {
 
                     {/* List */}
                     <div className="flex flex-col gap-2">
-                        {mockLeaderboard.map((user) => (
+                        {currentList.map((user) => (
                             <LeaderboardRow
                                 key={user.rank}
                                 rank={user.rank}
@@ -60,21 +84,101 @@ export default function LeaderboardPage() {
                                 xp={user.xp}
                                 cr={user.cr}
                                 totalBounties={user.totalBounties}
+                                isExpanded={expandedRank === user.rank}
+                                onToggle={() => toggleRow(user.rank)}
                             />
                         ))}
+
+                        {/* Sticky User Rank */}
+                        {!isUserOnCurrentPage && (
+                            <>
+                                <div className="flex items-center gap-4 px-6 py-2 mt-4">
+                                    <div className="h-[1px] flex-1 bg-white/5"></div>
+                                    <span className="text-[10px] font-bold text-zinc-700 uppercase tracking-[0.3em]">Your Position</span>
+                                    <div className="h-[1px] flex-1 bg-white/5"></div>
+                                </div>
+                                <LeaderboardRow
+                                    rank={currentUser.rank}
+                                    username={currentUser.username}
+                                    avatar={currentUser.avatar}
+                                    level={currentUser.level}
+                                    xp={currentUser.xp}
+                                    cr={currentUser.cr}
+                                    totalBounties={currentUser.totalBounties}
+                                    isExpanded={expandedRank === currentUser.rank}
+                                    onToggle={() => toggleRow(currentUser.rank)}
+                                    isCurrentUser={true}
+                                />
+                            </>
+                        )}
                     </div>
 
-                    {/* Pagination */}
-                    <div className="flex justify-center items-center gap-4 mt-16">
-                        <button className="text-xs font-bold uppercase text-zinc-500 hover:text-white transition-colors">Previous</button>
-                        <div className="flex gap-2">
-                            {[1, 2, 3].map(n => (
-                                <button key={n} className={`w-8 h-8 flex items-center justify-center text-xs font-bold rounded ${n === 1 ? 'bg-[#D3E97A] text-black' : 'border border-white/5 text-zinc-500 hover:text-white transition-colors'}`}>
-                                    {n}
-                                </button>
-                            ))}
+                    {/* Controls Footer */}
+                    <div className="mt-16 flex flex-col md:flex-row items-center justify-between gap-8 border-t border-white/5 pt-8">
+                        {/* Rows Per Page */}
+                        <div className="flex items-center gap-4">
+                            <span className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest">Rows per page:</span>
+                            <div className="flex gap-2">
+                                {[10, 20, 30].map(count => (
+                                    <button
+                                        key={count}
+                                        onClick={() => {
+                                            setItemsPerPage(count);
+                                            setCurrentPage(1); // Reset to first page
+                                        }}
+                                        className={`px-3 py-1 text-[10px] font-bold rounded transition-all ${itemsPerPage === count
+                                                ? 'bg-white/10 text-[#D3E97A] border border-[#D3E97A]/20'
+                                                : 'text-zinc-500 hover:text-white border border-transparent'
+                                            }`}
+                                    >
+                                        {count}
+                                    </button>
+                                ))}
+                            </div>
                         </div>
-                        <button className="text-xs font-bold uppercase text-zinc-500 hover:text-white transition-colors">Next</button>
+
+                        {/* Pagination */}
+                        <div className="flex items-center gap-4">
+                            <button
+                                onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                                disabled={currentPage === 1}
+                                className="text-[10px] font-bold uppercase text-zinc-500 hover:text-white transition-colors disabled:opacity-20 disabled:pointer-events-none"
+                            >
+                                Previous
+                            </button>
+
+                            <div className="flex gap-2">
+                                {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                                    // Simple pagination logic to show around current page
+                                    let pageNum = i + 1;
+                                    if (totalPages > 5 && currentPage > 3) {
+                                        pageNum = currentPage - 2 + i;
+                                        if (pageNum > totalPages) pageNum = totalPages - (4 - i);
+                                    }
+
+                                    return (
+                                        <button
+                                            key={pageNum}
+                                            onClick={() => setCurrentPage(pageNum)}
+                                            className={`w-8 h-8 flex items-center justify-center text-[10px] font-bold rounded transition-all ${currentPage === pageNum
+                                                    ? 'bg-[#D3E97A] text-black'
+                                                    : 'border border-white/5 text-zinc-500 hover:text-white hover:border-white/10'
+                                                }`}
+                                        >
+                                            {pageNum}
+                                        </button>
+                                    );
+                                })}
+                            </div>
+
+                            <button
+                                onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                                disabled={currentPage === totalPages}
+                                className="text-[10px] font-bold uppercase text-zinc-500 hover:text-white transition-colors disabled:opacity-20 disabled:pointer-events-none"
+                            >
+                                Next
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
