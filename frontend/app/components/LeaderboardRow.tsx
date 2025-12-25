@@ -68,7 +68,7 @@ const LeaderboardRow: React.FC<LeaderboardRowProps> = ({
 
             <div className="flex flex-col items-end w-32">
                 <div className="text-[10px] text-zinc-600 uppercase tracking-widest mb-1">Total CR</div>
-                <div className="text-white font-bold font-technor">{cr.toLocaleString()} CR</div>
+                <div className="text-white font-bold font-technor">{(cr || 0).toLocaleString()} CR</div>
             </div>
 
             <div className="flex flex-col items-end w-32">
