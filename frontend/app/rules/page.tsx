@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -104,9 +105,11 @@ export default function RulesPage() {
                                 <h3 className="text-2xl font-technor font-bold text-white mb-2">Ready to start?</h3>
                                 <p className="text-zinc-400 text-sm">Browse the issues and pick your first bounty today.</p>
                             </div>
-                            <button className="px-8 py-4 bg-[#D3E97A] text-black font-bold uppercase tracking-widest text-sm hover:scale-105 transition-transform">
-                                Explore Issues
-                            </button>
+                            <Link href="/issues">
+                                <button className="px-8 py-4 bg-[#D3E97A] text-black font-bold uppercase tracking-widest text-sm hover:scale-105 transition-transform">
+                                    Explore Issues
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

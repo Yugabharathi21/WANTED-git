@@ -20,7 +20,7 @@ const Footer = () => {
                         <li><Link href="/issues" className="hover:text-[#D3E97A] transition-colors">Browse Issues</Link></li>
                         <li><Link href="/leaderboard" className="hover:text-[#D3E97A] transition-colors">Leaderboard</Link></li>
                         <li><Link href="/rules" className="hover:text-[#D3E97A] transition-colors">Platform Rules</Link></li>
-                        <li><Link href="#" className="hover:text-[#D3E97A] transition-colors">Sponsors</Link></li>
+                        <li><Link href="/sponsor" className="hover:text-[#D3E97A] transition-colors">Sponsors</Link></li>
                     </ul>
                 </div>
                 <div>
