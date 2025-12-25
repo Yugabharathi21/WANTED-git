@@ -17,17 +17,18 @@ We welcome contributions to the WANTED platform itself! Whether you're fixing a 
 **Strict Adherence Required**:
 *   **Background**: Always `#060606`.
 *   **Primary Text**: `#EDEDED` (Zinc-100/200).
-*   **Accent**: `#D3E97A` (Use sparingly for CTAs and highlights).
+*   **Accent**: `#D3E97A` (The primary action color).
 *   **Fonts**:
     *   Headings: `Technor` (Bold/Black).
     *   Body: `Clash Display` (Regular/Light).
-*   **Spacing**: Use generous padding (`py-24`, `px-8 md:px-32`).
+*   **Icons**: Use `lucide-react` exclusively.
+*   **Spacing**: Maintain high-fidelity whitespace (`py-24`, `px-8 md:px-32 lg:px-60`).
 
 ## Project Structure
 
-*   `frontend/app`: Next.js App Router pages.
-*   `frontend/components`: React components (atomic design preferred).
-*   `Docs/`: Documentation (you are here).
+*   `frontend/app`: App Router pages (Leaderboard, Claims, Issues, etc.).
+*   `frontend/components`: Reusable UI modules (Modals, Cards, Nav).
+*   `Docs/`: Architecture, README, and Guides.
 
 ## Help Needed
 

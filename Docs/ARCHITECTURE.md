@@ -30,16 +30,18 @@ graph TD
 *   **Tech**: Python (FastAPI), NLP / LLM Agents.
 
 ### 3. Marketplace (The UI)
-*   **Role**: Displays ranked issues to developers. Allows filtering by stack, bounty, and difficulty.
-*   **Tech**: Next.js, Tailwind CSS.
-*   **Features**:
-    *   Real-time bounty updates.
-    *   "Claim" locking mechanism (24h reservation).
+*   **Role**: Premium interface for hunter-issue matching.
+*   **Tech**: Next.js, Framer Motion, Tailwind CSS.
+*   **Feature Modules**:
+    *   **Dashboard**: Profile overview, claim management, and hunter activity.
+    *   **Leaderboard**: Dynamic pagination (10/20/30) with sticky user rows and expandable mini-profiles.
+    *   **Bounty Creation**: Terminal-driven multi-step protocol for injecting issues.
+    *   **Dossier View**: Technical deep-dive for issues with requirements and active hunter status.
 
 ### 4. Reward System
-*   **XP Engine**: Calculates experience points based on difficulty and speed.
-    *   *Formula*: `XP = (Difficulty * 100) + (SpeedBonus)`
-*   **Payments**: Handles payouts via Stripe Connect. Funds are released only after the maintainer merges the PR.
+*   **XP Engine**: Calculates reputation points based on technical complexity and protocol impact.
+*   **CR (Credits)**: The liquid asset track. `1 XP = 0.25 CR` conversion by default.
+*   **Escrow**: Verified PR merges trigger automated reward dispersal.
 
 ## Database Schema (Simplified)
 

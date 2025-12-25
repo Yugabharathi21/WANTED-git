@@ -10,10 +10,11 @@
 ## 🚀 Features
 
 - **Algorithmic Pricing**: Issues are ranked by impact and difficulty to determine bounty size.
-- **Crowdfunding**: Sponsors can pledge funds to specific issues or pools.
-- **Gamification**: Earn XP, climb ranks (Rookie -> Architect), and unlock badges.
-- **Micro-Bounties**: Focus on small, manageable tasks to encourage frequent contributions.
-- **Seamless Payouts**: Automated payments upon PR merge via Stripe Connect.
+- **Protocol Sponsorship**: Individuals and organizations can support the network via tiered patronage.
+- **Gamified Leaderboard**: Track progress with single-card expansion views and rows-per-page control.
+- **Bounty Creation Protocol**: Multi-step terminal-inspired interface for injecting repos into the network.
+- **Technical Dossiers**: Deep-dive issue pages with requirements, hunter tracking, and GitHub sync.
+- **Seamless Payouts**: Automated payments upon PR merge via Stripe Connect (Planned).
 
 ## 🛠️ Tech Stack
 
@@ -62,12 +63,12 @@
 
 ```
 d:\WANTED.git\
-├── Docs/               # Project documentation
+├── Docs/               # Project architecture and guides
 ├── frontend/           # Next.js frontend application
-│   ├── app/            # App Router pages and layouts
-│   ├── components/     # Reusable UI components
-│   └── public/         # Static assets
-└── ignore.md           # Project scratchpad/notes
+│   ├── app/            # App Router (Leaderboard, Claims, Issues, Sponsor, Settings)
+│   ├── components/     # High-fidelity UI components (Avatar modals, Cards, Nav)
+│   └── public/         # Static assets and fonts
+└── ignore.md           # Project scratchpad
 ```
 
 ## 🎨 Design Philosophy
