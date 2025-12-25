@@ -15,6 +15,9 @@ const Navbar = () => {
         <Link href="/claims" className="hover:text-white transition-colors cursor-pointer relative group">
           <span className="group-hover:text-[#D3E97A] transition-colors">Claims</span>
         </Link>
+        <Link href="/leaderboard" className="hover:text-white transition-colors cursor-pointer relative group">
+          <span className="group-hover:text-[#D3E97A] transition-colors">Leaderboard</span>
+        </Link>
         <Link href="/profile" className="hover:text-white transition-colors cursor-pointer relative group">
           <span className="group-hover:text-[#D3E97A] transition-colors">Profile</span>
         </Link>

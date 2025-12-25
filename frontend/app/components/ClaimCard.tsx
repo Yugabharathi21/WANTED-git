@@ -34,7 +34,10 @@ const ClaimCard: React.FC<ClaimCardProps> = ({ repo, title, xp, status, dateClai
             <div className="flex items-end justify-between">
                 <div className="text-right ml-auto">
                     <div className="text-[10px] text-zinc-500 uppercase">Reward</div>
-                    <div className="text-2xl font-technor font-bold text-white">{xp} XP</div>
+                    <div className="flex flex-col items-end">
+                        <div className="text-xl font-technor font-bold text-white leading-none">{(xp / 4).toLocaleString()} CR</div>
+                        <div className="text-[10px] font-bold text-[#D3E97A] mt-1">{xp.toLocaleString()} XP</div>
+                    </div>
                 </div>
             </div>
         </div>

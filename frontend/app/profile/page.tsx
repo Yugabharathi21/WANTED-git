@@ -30,14 +30,20 @@ export default function ProfilePage() {
                         <p className="text-zinc-500 font-mono text-sm mb-6">@yugabharathi21 • Joined Dec 2025</p>
 
                         <div className="max-w-md">
-                            <div className="flex justify-between items-end mb-2">
-                                <span className="text-xs font-bold uppercase tracking-wider text-[#D3E97A]">Specialist</span>
-                                <span className="text-xs text-zinc-500 uppercase tracking-wider">Level 12 • 24,500 XP</span>
+                            <div className="flex justify-between items-end mb-4">
+                                <div className="flex items-center gap-5">
+                                    <img src="/Ranks Icon/Specialist.svg" alt="Specialist" className="w-20 h-20 md:w-24 md:h-24 drop-shadow-[0_0_15px_rgba(211,233,122,0.2)] hover:drop-shadow-[0_0_25px_rgba(211,233,122,0.4)] transition-all duration-500" />
+                                    <div>
+                                        <span className="text-2xl font-bold uppercase tracking-[0.2em] text-[#D3E97A]">Specialist</span>
+                                        <div className="text-xs text-zinc-500 uppercase tracking-widest mt-2">Global Rank #01</div>
+                                    </div>
+                                </div>
+                                <span className="text-xs text-zinc-500 uppercase tracking-wider font-mono">Level 12 • 24,500 XP</span>
                             </div>
-                            <div className="h-1 bg-white/5 rounded-full overflow-hidden">
-                                <div className="h-full bg-[#D3E97A] w-3/4 shadow-[0_0_15px_rgba(211,233,122,0.3)]"></div>
+                            <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
+                                <div className="h-full bg-[#D3E97A] w-3/4 shadow-[0_0_20px_rgba(211,233,122,0.4)]"></div>
                             </div>
-                            <p className="text-[10px] text-zinc-600 mt-2 text-right uppercase">5,500 XP until next rank</p>
+                            <p className="text-[10px] text-zinc-600 mt-3 text-right uppercase tracking-widest">5,500 XP until next rank</p>
                         </div>
                     </div>
 

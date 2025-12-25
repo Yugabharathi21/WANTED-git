@@ -123,9 +123,16 @@ const ProjectShowcase = () => {
                             <h4 className="text-white text-lg mb-4">Ranks System</h4>
                             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                                 {['Rookie', 'Contributor', 'Specialist', 'Expert', 'Architect'].map((rank, i) => (
-                                    <div key={rank} className={`p-4 border ${i === 4 ? 'border-[#D3E97A] text-[#D3E97A]' : 'border-white/10 text-zinc-400'} text-center`}>
-                                        <div className="text-xs uppercase opacity-50 mb-2">Lvl {i + 1}</div>
-                                        <div className="font-bold">{rank}</div>
+                                    <div key={rank} className={`p-10 border ${i === 4 ? 'border-[#D3E97A] text-[#D3E97A]' : 'border-white/10 text-zinc-400'} text-center flex flex-col items-center justify-center gap-6 transition-all hover:border-[#D3E97A]/50 bg-gradient-to-b from-transparent to-white/[0.01]`}>
+                                        <img
+                                            src={`/Ranks Icon/${rank === 'Architect' ? 'Expert-1' : rank}.svg`}
+                                            alt={rank}
+                                            className="w-20 h-20 md:w-28 md:h-28 opacity-90 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-110"
+                                        />
+                                        <div>
+                                            <div className="text-xs uppercase opacity-40 mb-2 tracking-[0.2em] font-mono">Level 0{i + 1}</div>
+                                            <div className="font-bold text-xl md:text-2xl font-technor tracking-tight uppercase leading-none">{rank}</div>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
