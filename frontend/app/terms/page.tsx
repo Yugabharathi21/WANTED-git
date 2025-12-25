@@ -1,0 +1,69 @@
+import React from 'react';
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
+export default function TermsPage() {
+    return (
+        <main className="min-h-screen bg-[#060606] text-[#EDEDED] font-clash selection:bg-[#D3E97A] selection:text-black flex flex-col">
+            <Navbar />
+
+            <div className="flex-1 px-8 md:px-32 lg:px-60 py-12 md:py-20">
+                <div className="max-w-4xl mx-auto">
+                    <h1 className="text-4xl md:text-6xl font-technor font-bold text-white mb-8 tracking-tighter">
+                        TERMS OF <span className="text-[#D3E97A]">SERVICE</span>
+                    </h1>
+
+                    <div className="space-y-12 text-zinc-400 leading-relaxed">
+                        <section>
+                            <h2 className="text-xl font-technor font-bold text-white mb-4 uppercase tracking-wider">1. Acceptance of Terms</h2>
+                            <p>
+                                By accessing or using WANTED.git, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our platform. These terms govern your use of our AI-powered bug bounty platform and all related services.
+                            </p>
+                        </section>
+
+                        <section>
+                            <h2 className="text-xl font-technor font-bold text-white mb-4 uppercase tracking-wider">2. Description of Service</h2>
+                            <p>
+                                WANTED.git is a platform that identifies, ranks, and prices open-source issues from GitHub. We provide a marketplace where contributors can earn Experience Points (XP) and Credits (CR) for resolving these issues. Our services include algorithmic pricing, automated payouts, and community reputation systems.
+                            </p>
+                        </section>
+
+                        <section>
+                            <h2 className="text-xl font-technor font-bold text-white mb-4 uppercase tracking-wider">3. User Accounts</h2>
+                            <p>
+                                To use most features of WANTED.git, you must connect your GitHub account. You are responsible for maintaining the security of your account and for all activities that occur under your account. We reserve the right to suspend or terminate accounts that violate our terms or engage in fraudulent activity.
+                            </p>
+                        </section>
+
+                        <section>
+                            <h2 className="text-xl font-technor font-bold text-white mb-4 uppercase tracking-wider">4. Bounty Eligibility and Payouts</h2>
+                            <p>
+                                Bounty rewards (Credits) are only eligible for payout after a Pull Request is successfully merged into the target repository and verified by our system. We reserve the right to withhold payouts if we detect gaming, botting, or any attempt to exploit the reward system.
+                            </p>
+                        </section>
+
+                        <section>
+                            <h2 className="text-xl font-technor font-bold text-white mb-4 uppercase tracking-wider">5. Intellectual Property</h2>
+                            <p>
+                                All code contributed through WANTED.git is subject to the license of the target repository. By submitting a solution, you represent that you have the right to contribute that code and that it does not infringe on any third-party intellectual property rights.
+                            </p>
+                        </section>
+
+                        <section>
+                            <h2 className="text-xl font-technor font-bold text-white mb-4 uppercase tracking-wider">6. Limitation of Liability</h2>
+                            <p>
+                                WANTED.git is provided "as is" without any warranties. We are not liable for any damages arising from your use of the platform, including but not limited to lost data, lost earnings, or bugs in the software.
+                            </p>
+                        </section>
+
+                        <div className="pt-12 border-t border-white/5 text-xs text-zinc-600">
+                            Last Updated: December 25, 2025
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <Footer />
+        </main>
+    );
+}
