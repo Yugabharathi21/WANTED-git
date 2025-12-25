@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "WANTED - Open Source Bug Bounty",
+  title: "WANTED.git - Open Source Bug Bounty",
   description: "AI-Powered Issue Discovery & Crowdfunded Micro-Bounties",
 };
 

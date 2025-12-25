@@ -8,8 +8,8 @@
 graph TD
     A[GitHub Repositories] -->|Webhooks/Polling| B(Ingestion Service)
     B --> C{Ranking Engine}
-    C -->|Bounty $$$| D[Marketplace DB]
-    E[Sponsors] -->|$$$| D
+    C -->|Bounty CR| D[Marketplace DB]
+    E[Sponsors] -->|CR| D
     F[Developers] -->|Claim & Fix| D
     F -->|PR Merge| G[Verification Service]
     G -->|Success| H[Payment & XP Engine]

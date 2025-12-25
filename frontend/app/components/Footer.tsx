@@ -7,7 +7,7 @@ const Footer = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
                 <div className="md:col-span-2">
                     <div className="text-2xl font-technor font-bold tracking-tight text-white mb-6">
-                        WANTED<span className="text-[10px] align-top ml-1 text-[#D3E97A]">BETA</span>
+                        WANTED.git<span className="text-[10px] align-top ml-1 text-[#D3E97A]">BETA</span>
                     </div>
                     <p className="text-zinc-500 font-light text-sm max-w-sm">
                         The AI-powered bug bounty platform for open source.
@@ -33,7 +33,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="flex flex-col md:flex-row justify-between items-center text-xs text-zinc-600 pt-8 border-t border-white/5">
-                <div>&copy; {new Date().getFullYear()} WANTED. All rights reserved.</div>
+                <div>&copy; {new Date().getFullYear()} WANTED.git. All rights reserved.</div>
             </div>
         </footer>
     );
